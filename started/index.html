@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <script src="https://kit.fontawesome.com/84b3504d67.js" crossorigin="anonymous"></script>
+  <title>Parabéns Foxy!</title>
+</head>
+
+<body>
+  <div class="mainvid">
+    <video id="myVideo">
+      <source src="../assets/videos/foxy.mp4" type="video/mp4">
+    </video>
+  </div>
+  <h1 style="padding-top: 20px; color: #fff; font-size: 5rem; font-weight: 700; align-items: center; justify-content: center;">abc</h1>
+  <div class="parent">
+    <!-- preload="none" -->
+    <div class="div1"><img id="blob1" src="../assets/img/animations/blobanimation.svg" alt="Blob" width="300px" height="300px"><i id="lock1" class="fa-solid fa-lock fa-2xl" style="color: #ffffff;"></i> </div>
+    <div class="div2" style="background-color: rgb(255, 163, 127);">a </div>
+    <div class="div3" style="background-color: rgb(255, 163, 127);">a </div>
+    <div class="div4" style="background-color: rgb(255, 163, 127);">a </div>
+    <div class="div5" style="background-color: rgb(255, 163, 127);">a </div>
+    <div class="div6" style="background-color: rgb(255, 163, 127);">a </div>
+  </div>
+  <div class="sounds">
+    <audio id="newvideo" src="../assets/videos/newvideo.mp3" preload="none"></audio>
+    <audio id="unlock" src="../assets/videos/unlock.mp3" preload="none"></audio>
+  </div>
+  <script>
+    const myVideo = document.getElementById("myVideo");
+    const div1 = document.querySelector(".div1");
+    const unlockaud = document.getElementById("unlock");
+    const newvideoaud = document.getElementById("newvideo");
+    const lock1 = document.getElementById("lock1");
+    const blob1 = document.getElementById("blob1");
+
+    myVideo.addEventListener("ended", () => {
+      div1.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "nearest"
+      });
+      div1.classList.add("animated-box-shadow");
+      blob1.src = "../assets/img/animations/blobanimationCOLOR.svg"
+      newvideoaud.play();
+      setTimeout(function () {
+        unlockaud.play();
+        lock1.classList.remove("fa-lock");
+        lock1.classList.add("fa-lock-open");
+      }, 3500);
+    });
+    window.onload = function () {
+      setTimeout(function () {
+        var video = document.getElementById("myVideo");
+        video.play();
+        video.controls = true;
+      }, 3000);
+    }
+  </script>
+</body>
+
+</html>

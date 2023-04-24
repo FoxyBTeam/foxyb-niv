@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/start.css" preload>
+    <title>Parabainx</title>
+</head>
+
+<body>
+    <div class="text" id="txt">
+        conectando...
+    </div>
+    <div class="box">
+        <div class="comp"></div>
+        <div class="loader"></div>
+        <div class="con"></div>
+        <div class="byte"><img src="assets/img/fox.png" width="50px" height="50px"
+                style="transform: translate(-50%, -40%);" /></div>
+        <div class="server"></div>
+        <div class="stuff">
+            <p id="loadingp">Indo ao banheiro pela 84ª vez hoje.</p>
+        </div>
+    </div>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("txt");
+            if (x.innerHTML === "conectando") {
+                x.innerHTML = "conectando.";
+            } else if (x.innerHTML === "conectando.") {
+                x.innerHTML = "conectando..";
+            } else if (x.innerHTML === "conectando..") {
+                x.innerHTML = "conectando...";
+            } else {
+                x.innerHTML = "conectando";
+            }
+        }
+        setInterval(myFunction, 500);
+        function fun() {
+            window.location.href = "started/index.html";
+        }
+        setInterval(fun, 15000);
+        async function animloader2() {
+            const loadingp = document.getElementById('loadingp');
+            const loadingmessages = ["Comendo uma pizza.",
+                "Dando rage quit em um jogo.",
+                "Assistindo a Amy abrir a porta.",
+                "Capinando mato.",
+                "Escrevendo nomes no meu rosto.",
+                "Eu tentei antes e funcionou!",
+                "MEU CARTÃO DE CRÉDITO VAI VENCER!!",
+                "Eu comprei uma nova peruca!",
+                "Assistindo 드라마 (dorama)",
+                "Fazendo ASMR (uma vez ao mês é o suficiente :kappa:)",
+                "Cuidando da Amy e da Kali"]
+            const random = loadingmessages[Math.floor(Math.random() * loadingmessages.length)];
+            loadingp.innerHTML = random;
+        }
+        let counter = 0;
+        const intervalId = setInterval(() => {
+            if (counter < 5) {
+                animloader2();
+                counter++;
+            } else {
+                clearInterval(intervalId);
+            }
+        }, 3000);
+
+    </script>
+</body>
+
+</html>

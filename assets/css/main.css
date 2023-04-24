@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #1F1F1F;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
+    user-select: none;
+    /* Standard syntax */
+}
+
+.parent {
+    display: grid;
+    position: relative;
+    grid-template-columns: 1fr 0.5fr 1fr;
+    grid-template-rows: repeat(6, 2fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    padding: 10px 30px;
+    z-index: -1;
+}
+
+.mainvid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(-45deg, #242424, #9f07dbb4, #ff5f1ab0, #9f07dbb4, #242424);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+.mainvid>video {
+    max-width: 80%;
+    max-height: 70%;
+    -webkit-box-shadow: 14px 15px 72px 14px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 14px 15px 72px 14px rgba(0, 0, 0, 0.75);
+    box-shadow: 14px 15px 72px 14px rgba(0, 0, 0, 0.75);
+    outline-color: rgb(255, 255, 255);
+    outline-style: solid;
+    outline-width: 3px;
+    border-radius: 1px;
+    animation: rotateHue 15s infinite ease-in-out;
+}
+
+@keyframes rotateHue {
+    0% {
+        outline-color: red;
+    }
+
+    16.67% {
+        outline-color: yellow;
+    }
+
+    33.33% {
+        outline-color: lime;
+    }
+
+    50% {
+        outline-color: aqua;
+    }
+
+    66.67% {
+        outline-color: blue;
+    }
+
+    83.33% {
+        outline-color: fuchsia;
+    }
+
+    100% {
+        outline-color: red;
+    }
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+    scrollbar-width: auto;
+    scrollbar-color: #ff5e1a #424242;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #242424;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #ff5e1a;
+    border-radius: 3px;
+}
+
+.div1 {
+    grid-area: 1 / 1 / 2 / 2;
+    height: 500px;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: rgb(71, 71, 71);
+    position: relative;
+    /* added */
+    background: linear-gradient(-45deg, rgb(71, 71, 71), #242424);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+    -webkit-box-shadow: 10px 10px 47px -6px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 47px -6px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 47px -6px rgba(0, 0, 0, 0.75);
+    transition-duration: 300ms;
+    transition: all;
+}
+
+.div1 svg {
+    cursor: pointer;
+}
+
+.div1 i {
+    position: absolute;
+    /* added */
+    top: 50%;
+    /* added */
+    left: 50%;
+    /* added */
+    transform: translate(-50%, -50%);
+    /* added */
+    cursor: pointer !important;
+}
+.animated-box-shadow {
+    /* Set the initial box-shadow with the first color */
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.75);
+    animation: animate-box-shadow 5s ease-in-out infinite;
+  }
+  
+  @keyframes animate-box-shadow {
+    0% {
+      /* Set the box-shadow with the first color */
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.75);
+    }
+    25% {
+      /* Set the box-shadow with the second color */
+      box-shadow: 0 0 20px rgba(255, 255, 0, 0.75);
+    }
+    50% {
+      /* Set the box-shadow with the third color */
+      box-shadow: 0 0 20px rgba(0, 255, 0, 0.75);
+    }
+    75% {
+      /* Set the box-shadow with the fourth color */
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.75);
+    }
+    100% {
+      /* Set the box-shadow with the fifth color */
+      box-shadow: 0 0 20px rgba(255, 0, 255, 0.75);
+    }
+  }
+  
+
+.div2 {
+    grid-area: 2 / 3 / 3 / 4;
+    border-radius: 5px;
+}
+
+.div3 {
+    grid-area: 3 / 1 / 4 / 2;
+    border-radius: 5px;
+}
+
+.div4 {
+    grid-area: 4 / 3 / 5 / 4;
+    border-radius: 5px;
+}
+
+.div5 {
+    grid-area: 5 / 1 / 6 / 2;
+    border-radius: 5px;
+}
+
+.div6 {
+    grid-area: 6 / 3 / 7 / 4;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 768px) {
+    .parent {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(9, 1fr);
+    }
+
+    .div1,
+    .div2 {
+        grid-area: auto;
+        width: 100%;
+    }
+
+    .div3 {
+        grid-area: 3 / 1 / 4 / 3;
+    }
+
+    .div4 {
+        grid-area: 4 / 1 / 5 / 3;
+    }
+
+    .div5 {
+        grid-area: 5 / 1 / 6 / 3;
+    }
+
+    .div6 {
+        grid-area: 6 / 1 / 7 / 3;
+    }
+}
