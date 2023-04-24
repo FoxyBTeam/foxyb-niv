@@ -143,6 +143,14 @@ body {
     justify-content: center;
 }
 
+.mudtxt p {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #fff;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
 .blockedbg {
     background: linear-gradient(-45deg, rgb(71, 71, 71), #242424);
     background-size: 400% 400%;

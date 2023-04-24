@@ -32,8 +32,8 @@ myVideo.addEventListener("ended", () => {
 
 function animations(div, lock, blob) {
   const divElement = document.querySelector(`.${div}`);
-  const lockElement = document.getElementById(`.${lock}`);
-  const blobElement = document.getElementById(`.${blob}`);
+  const lockElement = document.getElementById(`${lock}`);
+  const blobElement = document.getElementById(`${blob}`);
   
   divElement.scrollIntoView({
     behavior: "smooth",
