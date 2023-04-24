@@ -62,7 +62,7 @@ body {
     outline-style: solid;
     outline-width: 3px;
     border-radius: 1px;
-    animation: rotateHue 15s infinite ease-in-out;
+    animation-name: rotateHue 15s infinite ease-in-out;
 }
 
 @keyframes rotateHue {
@@ -161,12 +161,13 @@ body {
 .unblockedbg {
     background: linear-gradient(-120deg, rgb(255, 58, 58), #ff6637, #ffaf37, #87ff37, #37e8ff, #3744ff, #d037ff, #ff37d4, #ff3737);
     background-size: 400% 400%;
-    animation: gradient 10s ease infinite !important;
+    animation: gradient 10s ease infinite, animate-box-shadow 5s ease-in-out infinite;
     transition-duration: 300ms;
 }
 
 svg {
     cursor: pointer;
+    opacity: 1;
 }
 
 i {
@@ -179,38 +180,55 @@ i {
     transform: translate(-50%, -50%);
     /* added */
     cursor: pointer !important;
+    opacity: 1;
 }
 
+.watchedbg {
+    background: linear-gradient(-45deg, rgb(0, 0, 0), #1b1b1b);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+    transition-duration: 300ms;
+    opacity: 1;
+}
 .animated-box-shadow {
     /* Set the initial box-shadow with the first color */
     box-shadow: 0 0 20px rgba(255, 0, 0, 0.75);
-    animation: animate-box-shadow 5s ease-in-out infinite;
 }
 
 @keyframes animate-box-shadow {
     0% {
-        /* Set the box-shadow with the first color */
+        outline-color: red;
         box-shadow: 0 0 20px rgba(255, 0, 0, 0.75);
     }
 
-    25% {
-        /* Set the box-shadow with the second color */
+    16.67% {
+        outline-color: yellow;
         box-shadow: 0 0 20px rgba(255, 255, 0, 0.75);
     }
 
-    50% {
-        /* Set the box-shadow with the third color */
+    33.33% {
+        outline-color: lime;
         box-shadow: 0 0 20px rgba(0, 255, 0, 0.75);
     }
 
-    75% {
-        /* Set the box-shadow with the fourth color */
+    50% {
+        outline-color: aqua;
         box-shadow: 0 0 20px rgba(0, 255, 255, 0.75);
     }
 
-    100% {
-        /* Set the box-shadow with the fifth color */
+    66.67% {
+        outline-color: blue;
+        box-shadow: 0 0 20px rgba(0, 0, 255, 0.75);
+    }
+
+    83.33% {
+        outline-color: fuchsia;
         box-shadow: 0 0 20px rgba(255, 0, 255, 0.75);
+    }
+
+    100% {
+        outline-color: red;
+        box-shadow: 0 0 20px rgba(255, 0, 0, 0.75);
     }
 }
 
@@ -228,6 +246,7 @@ i {
     -moz-box-shadow: 10px 10px 47px -6px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 10px 47px -6px rgba(0, 0, 0, 0.75);
     transition-duration: 300ms;
+    opacity: 1;
 }
 
 .div3 {
@@ -243,6 +262,7 @@ i {
     -moz-box-shadow: 10px 10px 47px -6px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 10px 47px -6px rgba(0, 0, 0, 0.75);
     transition-duration: 300ms;
+    opacity: 1;
 }
 
 .div4 {
@@ -258,6 +278,7 @@ i {
     -moz-box-shadow: 10px 10px 47px -6px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 10px 47px -6px rgba(0, 0, 0, 0.75);
     transition-duration: 300ms;
+    opacity: 1;
 }
 
 .div5 {
@@ -273,6 +294,7 @@ i {
     -moz-box-shadow: 10px 10px 47px -6px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 10px 47px -6px rgba(0, 0, 0, 0.75);
     transition-duration: 300ms;
+    opacity: 1;
 }
 
 .div6 {
@@ -288,6 +310,7 @@ i {
     -moz-box-shadow: 10px 10px 47px -6px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 10px 47px -6px rgba(0, 0, 0, 0.75);
     transition-duration: 300ms;
+    opacity: 1;
 }
 
 @media screen and (max-width: 768px) {
@@ -320,7 +343,6 @@ i {
 }
 
 .hidden {
-    display: none;
-    transition-property: display;
+    opacity: 0;
     transition-duration: 300ms;
 }

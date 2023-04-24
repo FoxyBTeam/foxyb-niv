@@ -4,6 +4,7 @@ const unlockaud = document.getElementById("unlock");
 const newvideoaud = document.getElementById("newvideo");
 const lock1 = document.getElementById("lock1");
 const blob1 = document.getElementById("blob1");
+const h1 = document.createElement('h1');
 
 myVideo.addEventListener("ended", () => {
   div1.scrollIntoView({
@@ -34,7 +35,7 @@ function animations(div, lock, blob) {
   const divElement = document.querySelector(`.${div}`);
   const lockElement = document.getElementById(`${lock}`);
   const blobElement = document.getElementById(`${blob}`);
-  
+
   divElement.scrollIntoView({
     behavior: "smooth",
     block: "center",
@@ -42,6 +43,7 @@ function animations(div, lock, blob) {
   });
   divElement.classList.add("animated-box-shadow");
   newvideoaud.play();
+  divElement.classList.add("animated-box-shadow");
   setTimeout(function () {
     unlockaud.play();
     lockElement.classList.remove("fa-lock");
@@ -54,6 +56,18 @@ function animations(div, lock, blob) {
       lockElement.classList.remove("fa-lock-open");
       lockElement.classList.remove("fa-2xl")
       blobElement.classList.add("hidden");
+      setTimeout(function () {
+        divElement.classList.remove("unblockedbg");
+        divElement.classList.add("watchedbg");
+        // set the font size to 1rem
+        // h1.style.fontSize = '1rem';
+        // h1.style.color = 'white';
+        // h1.style.textAlign = 'center';
+        // h1.style.zIndex = '100';
+        // h1.textContent = 'Hello, world!';
+        // divElement.appendChild(h1);
+
+      }, 20000);
     }, 3000);
   }, 3500);
 }
