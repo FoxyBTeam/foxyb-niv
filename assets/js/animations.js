@@ -4,31 +4,9 @@ const unlockaud = document.getElementById("unlock");
 const newvideoaud = document.getElementById("newvideo");
 const lock1 = document.getElementById("lock1");
 const blob1 = document.getElementById("blob1");
-const h1 = document.createElement('h1');
+const button = document.createElement('button');
 
-myVideo.addEventListener("ended", () => {
-  div1.scrollIntoView({
-    behavior: "smooth",
-    block: "center",
-    inline: "nearest"
-  });
-  div1.classList.add("animated-box-shadow");
-  newvideoaud.play();
-  setTimeout(function () {
-    unlockaud.play();
-    lock1.classList.remove("fa-lock");
-    lock1.classList.add("fa-lock-open");
-    blob1.src = "../assets/img/animations/blobanimationCOLOR.svg"
-    div1.classList.remove("blockedbg");
-    div1.classList.add("unblockedbg");
-    setTimeout(function () {
-      lock1.classList.remove("fa-solid")
-      lock1.classList.remove("fa-lock-open");
-      lock1.classList.remove("fa-2xl")
-      blob1.classList.add("hidden");
-    }, 3000);
-  }, 3500);
-});
+
 
 
 function animations(div, lock, blob) {
@@ -59,30 +37,23 @@ function animations(div, lock, blob) {
       setTimeout(function () {
         divElement.classList.remove("unblockedbg");
         divElement.classList.add("watchedbg");
-        // set the font size to 1rem
-        // h1.style.fontSize = '1rem';
-        // h1.style.color = 'white';
-        // h1.style.textAlign = 'center';
-        // h1.style.zIndex = '100';
-        // h1.textContent = 'Hello, world!';
-        // divElement.appendChild(h1);
-
-      }, 20000);
+        divElement.innerHTML = "Video assistido.";
+        divElement.style.display = "flex";
+        divElement.style.justifyContent = "center";
+        divElement.style.alignItems = "center";
+        divElement.style.flexDirection = "column";
+        const button = document.createElement('button');
+        button.textContent = 'Assistir novamente?';
+        button.classList.add('btn');
+        button.addEventListener('click', () => video(div));
+        divElement.appendChild(button);
+      }, 5000);
     }, 3000);
   }, 3500);
 }
 
-
-
-
-window.onload = function () {
-  setTimeout(function () {
-    var video = document.getElementById("myVideo");
-    video.muted = true;
-    video.play();
-    video.controls = true;
-    setTimeout(function () {
-      video.muted = false;
-    }, 300);
-  }, 5000);
+function playVideoFullScreen() {
+  const iframe = document.getElementById('mainVideo');
+  iframe.requestFullscreen();
+  iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
 }
