@@ -74,7 +74,7 @@ body {
     outline-style: solid;
     outline-width: 3px;
     border-radius: 1px;
-    animation-name: rotateHue 15s infinite ease-in-out;
+    animation: rotateHue 15s infinite ease-in-out;
 }
 
 @keyframes rotateHue {
@@ -146,7 +146,14 @@ body {
     transition-duration: 300ms;
     color: #fff;    
 }
-
+.divs iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
 .mudtxt {
     padding-top: 50px;
     color: #fff;

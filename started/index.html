@@ -13,6 +13,7 @@
 <body>
   <div class="mainvid">
     <button onclick="animations('div1', 'lock1', 'blob1')">DEBUG | Assistiu o video</button>
+    <button onclick="playVideoFullScreen();">DEBUG | Full Screen (Bugged)</button>
     <iframe id="mainVideo" width="1080" height="610" src="https://www.youtube.com/embed/X8avbciUP3c"
       title="YouTube video player" frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -21,8 +22,8 @@
   <div>
     <div class="mudtxt">
       <h1>
-        Um titulo falando sobre os videos!</h1>
-      <p>Um texto complementando o titulo acima</p>
+        Você é importante para muitas pessoas!</h1>
+      <p>Abaixo estão algumas delas, que decidiram lhe mandar um recado!</p>
     </div>
     <div style="display: flex; justify-content: center; ">
       <button onclick="animations('div2', 'lock2', 'blob2')">DEBUG | Assistiu o video 1</button>
@@ -34,7 +35,10 @@
     <div class="parent">
       <!-- preload="none" -->
       <div class="div1 blockedbg divs"><img id="blob1" src="../assets/img/animations/blobanimation.svg" alt="Blob"
-          width="300px" height="300px"><i id="lock1" class="fa-solid fa-lock fa-2xl" style="color: #ffffff;"></i> </div>
+          width="300px" height="300px"><i id="lock1" class="fa-solid fa-lock fa-2xl" style="color: #ffffff;"></i>
+        <iframe id="video1" src="https://www.youtube.com/embed/X8avbciUP3c" title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen class="hidden"></iframe></div>
       <div class="div2 blockedbg divs"><img id="blob2" src="../assets/img/animations/blobanimation.svg" alt="Blob"
           width="300px" height="300px"><i id="lock2" class="fa-solid fa-lock fa-2xl" style="color: #ffffff;"></i> </div>
       <div class="div3 blockedbg divs"><img id="blob3" src="../assets/img/animations/blobanimation.svg" alt="Blob"
