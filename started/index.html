@@ -8,15 +8,52 @@
   <link rel="stylesheet" href="../assets/css/main.css">
   <script src="https://kit.fontawesome.com/84b3504d67.js" crossorigin="anonymous"></script>
   <title>Parabéns Foxy!</title>
+  <script>
+    // 1. Carregue a API do IFrame Player
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // 2. Crie um objeto de player do YouTube depois que a API estiver pronta
+    var player;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('mainVideo', {
+        events: {
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+
+    // 3. Quando o estado do player mudar, verifique se o vídeo terminou de ser reproduzido
+    function onPlayerStateChange(event) {
+      if (event.data == YT.PlayerState.ENDED) {
+        console.log("Main Video assistido");
+        setTimeout(function () {
+          if (document.fullscreenElement) {
+            document.exitFullscreen();
+          }
+          animations(div1, lock1, blob1);
+        }, 5000);
+      }
+    }
+  </script>
 </head>
 
-<body>
+<body id="mainbody" class="overflowhi">
+  <div id="carregandodiv" style="z-index: 99999; position: absolute; background-color: rgba(0, 0, 0, 0.904); width: 200vh; height: 100vh; display: flex; justify-content: center; align-items: center;">
+    <div>
+      <h1 style="color: #ffffff; text-align: center;" id="txt">Carregando Conteúdo...</h1>
+      <p style="color: #ffffff; text-align: center; font-weight: 500;" id="loadingp">Aguarde!</p>
+    </div>
+  </div>
+  
   <div class="mainvid">
     <button onclick="animations('div1', 'lock1', 'blob1')">DEBUG | Assistiu o video</button>
     <button onclick="playVideoFullScreen();">DEBUG | Full Screen (Bugged)</button>
     <iframe id="mainVideo" width="1080" height="610" src="https://www.youtube.com/embed/X8avbciUP3c"
       title="YouTube video player" frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
       allowfullscreen></iframe>
   </div>
   <div>
@@ -38,7 +75,8 @@
           width="300px" height="300px"><i id="lock1" class="fa-solid fa-lock fa-2xl" style="color: #ffffff;"></i>
         <iframe id="video1" src="https://www.youtube.com/embed/X8avbciUP3c" title="YouTube video player" frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen class="hidden"></iframe></div>
+          allowfullscreen class="hidden"></iframe>
+      </div>
       <div class="div2 blockedbg divs"><img id="blob2" src="../assets/img/animations/blobanimation.svg" alt="Blob"
           width="300px" height="300px"><i id="lock2" class="fa-solid fa-lock fa-2xl" style="color: #ffffff;"></i> </div>
       <div class="div3 blockedbg divs"><img id="blob3" src="../assets/img/animations/blobanimation.svg" alt="Blob"
@@ -56,6 +94,7 @@
     <audio id="unlock" src="../assets/videos/unlock.mp3" preload="none"></audio>
   </div>
   <script src="../assets/js/animations.js"></script>
+  <script src="../assets/js/load.js"></script>
 </body>
 
 </html>

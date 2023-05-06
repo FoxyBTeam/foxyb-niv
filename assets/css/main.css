@@ -192,6 +192,10 @@ svg {
     opacity: 1;
 }
 
+.overflowhi {
+    overflow: hidden;
+}
+
 i {
     position: absolute;
     /* added */

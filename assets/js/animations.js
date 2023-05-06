@@ -1,4 +1,4 @@
-const myVideo = document.getElementById("myVideo");
+const mainVideo = document.getElementById("mainVideo");
 const div1 = document.querySelector(".div1");
 const unlockaud = document.getElementById("unlock");
 const newvideoaud = document.getElementById("newvideo");
@@ -13,7 +13,7 @@ function animations(div, lock, blob) {
   const divElement = document.querySelector(`.${div}`);
   const lockElement = document.getElementById(`${lock}`);
   const blobElement = document.getElementById(`${blob}`);
-
+  console.log(`div: ${div}` + `lock: ${lock}` + `blob: ${blob}`);
   divElement.scrollIntoView({
     behavior: "smooth",
     block: "center",
@@ -21,7 +21,6 @@ function animations(div, lock, blob) {
   });
   divElement.classList.add("animated-box-shadow");
   newvideoaud.play();
-  divElement.classList.add("animated-box-shadow");
   setTimeout(function () {
     unlockaud.play();
     lockElement.classList.remove("fa-lock");
@@ -33,9 +32,10 @@ function animations(div, lock, blob) {
       lockElement.classList.remove("fa-solid")
       lockElement.classList.remove("fa-lock-open");
       lockElement.classList.remove("fa-2xl")
+      divElement.classList.remove("animated-box-shadow");
       blobElement.classList.add("hidden");
       setTimeout(function () {
-        videowatched(divElement, lockElement, blobElement)
+        videowatched(`${div}`, `${lock}`, `${blob}`);
       }, 5000);
     }, 3000);
   }, 3500);
@@ -45,6 +45,14 @@ function playVideoFullScreen() {
   const iframe = document.getElementById('mainVideo');
   iframe.requestFullscreen();
   iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+
+  // Add event listener to detect when full screen mode changes
+  document.addEventListener("fullscreenchange", function () {
+    if (!document.fullscreenElement) {
+      // If the user exits full screen mode, exit full screen on behalf of the user
+      document.exitFullscreen();
+    }
+  });
 }
 
 function videowatched(div, lock, blob) {
@@ -83,6 +91,16 @@ function watchagain(div, lock, blob) {
   const lockElement = document.getElementById(`${lock}`);
   const blobElement = document.getElementById(`${blob}`);
   // Play video
-  // myVideo.currentTime = 0;
-  // myVideo.play();
+  // mainVideo.currentTime = 0;
+  // mainVideo.play();
 }
+
+mainVideo.addEventListener('ended', function() {
+  console.log("Main Video assistido");
+  setTimeout(function() {
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    }
+    animations(div1, lock1, blob1);
+  }, 5000);
+});
