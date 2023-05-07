@@ -8,36 +8,6 @@
   <link rel="stylesheet" href="../assets/css/main.css">
   <script src="https://kit.fontawesome.com/84b3504d67.js" crossorigin="anonymous"></script>
   <title>Parabéns Foxy!</title>
-  <script>
-    // 1. Carregue a API do IFrame Player
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    // 2. Crie um objeto de player do YouTube depois que a API estiver pronta
-    var player;
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('mainVideo', {
-        events: {
-          'onStateChange': onPlayerStateChange
-        }
-      });
-    }
-
-    // 3. Quando o estado do player mudar, verifique se o vídeo terminou de ser reproduzido
-    function onPlayerStateChange(event) {
-      if (event.data == YT.PlayerState.ENDED) {
-        console.log("Main Video assistido");
-        setTimeout(function () {
-          if (document.fullscreenElement) {
-            document.exitFullscreen();
-          }
-          animations(div1, lock1, blob1);
-        }, 5000);
-      }
-    }
-  </script>
 </head>
 
 <body id="mainbody">
@@ -53,10 +23,9 @@
   <div class="mainvid">
     <button onclick="animations('div1', 'lock1', 'blob1')">DEBUG | Assistiu o video</button>
     <button onclick="playVideoFullScreen();">DEBUG | Full Screen (Bugged)</button>
-    <iframe id="mainVideo" width="1080" height="610" src="https://www.youtube.com/embed/dxW9Whf6pWA"
-      title="YouTube video player" frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
-      allowfullscreen></iframe>
+
+
+    <div id="mainVideo"></div>
   </div>
   <div>
     <div class="mudtxt">
@@ -73,22 +42,54 @@
     </div>
     <div class="parent">
       <!-- preload="none" -->
-      <div class="div1 blockedbg divs"><img id="blob1" src="../assets/img/animations/blobanimation.svg" alt="Blob"
-          width="300px" height="300px"><i id="lock1" class="fa-solid fa-lock fa-2xl" style="color: #ffffff;"></i>
-        <iframe id="video1" src="https://www.youtube.com/embed/X8avbciUP3c" title="YouTube video player" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen class="hidden"></iframe>
+      <div class="div1 blockedbg divs">
+        <div class="overlay">
+          <img id="blob1" src="../assets/img/animations/blobanimation.svg" alt="Blob" width="300px" height="300px" style="display: block" />
+          <i id="lock1" class="fa-solid fa-lock fa-2xl"></i>
+        </div>
+        <div id="video1" class="hidden videoframe"></div>
       </div>
-      <div class="div2 blockedbg divs"><img id="blob2" src="../assets/img/animations/blobanimation.svg" alt="Blob"
-          width="300px" height="300px"><i id="lock2" class="fa-solid fa-lock fa-2xl" style="color: #ffffff;"></i> </div>
-      <div class="div3 blockedbg divs"><img id="blob3" src="../assets/img/animations/blobanimation.svg" alt="Blob"
-          width="300px" height="300px"><i id="lock3" class="fa-solid fa-lock fa-2xl" style="color: #ffffff;"></i> </div>
-      <div class="div4 blockedbg divs"><img id="blob4" src="../assets/img/animations/blobanimation.svg" alt="Blob"
-          width="300px" height="300px"><i id="lock4" class="fa-solid fa-lock fa-2xl" style="color: #ffffff;"></i> </div>
-      <div class="div5 blockedbg divs"><img id="blob5" src="../assets/img/animations/blobanimation.svg" alt="Blob"
-          width="300px" height="300px"><i id="lock5" class="fa-solid fa-lock fa-2xl" style="color: #ffffff;"></i> </div>
-      <div class="div6 blockedbg divs"><img id="blob6" src="../assets/img/animations/blobanimation.svg" alt="Blob"
-          width="300px" height="300px"><i id="lock6" class="fa-solid fa-lock fa-2xl" style="color: #ffffff;"></i> </div>
+
+      <div class="div2 blockedbg divs">
+        <div class="overlay">
+          <img id="blob2" src="../assets/img/animations/blobanimation.svg" alt="Blob" width="300px" height="300px" style="display: block" />
+          <i id="lock2" class="fa-solid fa-lock fa-2xl"></i>
+        </div>
+        <div id="video2" class="hidden videoframe"></div>
+      </div>
+
+      <div class="div3 blockedbg divs">
+        <div class="overlay">
+          <img id="blob3" src="../assets/img/animations/blobanimation.svg" alt="Blob" width="300px" height="300px" style="display: block" />
+          <i id="lock3" class="fa-solid fa-lock fa-2xl"></i>
+        </div>
+        <div id="video3" class="hidden videoframe"></div>
+      </div>
+
+      <div class="div4 blockedbg divs">
+        <div class="overlay">
+          <img id="blob4" src="../assets/img/animations/blobanimation.svg" alt="Blob" width="300px" height="300px" style="display: block" />
+          <i id="lock4" class="fa-solid fa-lock fa-2xl"></i>
+        </div>
+        <div id="video4" class="hidden videoframe"></div>
+      </div>
+
+      <div class="div5 blockedbg divs">
+        <div class="overlay">
+          <img id="blob5" src="../assets/img/animations/blobanimation.svg" alt="Blob" width="300px" height="300px" style="display: block" />
+          <i id="lock5" class="fa-solid fa-lock fa-2xl"></i>
+        </div>
+        <div id="video5" class="hidden videoframe"></div>
+      </div>
+
+      <div class="div6 blockedbg divs">
+        <div class="overlay">
+          <img id="blob6" src="../assets/img/animations/blobanimation.svg" alt="Blob" width="300px" height="300px" style="display: block" />
+          <i id="lock6" class="fa-solid fa-lock fa-2xl"></i>
+        </div>
+        <div id="video6" class="hidden videoframe"></div>
+      </div>
+
     </div>
   </div>
   <div class="grid">
@@ -224,10 +225,91 @@
     <audio id="newvideo" src="../assets/videos/newvideo.mp3" preload="none"></audio>
     <audio id="unlock" src="../assets/videos/unlock.mp3" preload="none"></audio>
   </div>
+
   <script src="../assets/js/animations.js"></script>
   <script src="../assets/js/load.js"></script>
   <script src="../assets/js/youtube.js"></script>
   <script src="../assets/js/texthandler.js"></script>
+
+  <script>
+    var tag = document.createElement('script');
+
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    function onYouTubeIframeAPIReady() {
+      new YT.Player('mainVideo', {
+        height: '610',
+        width: '1080',
+        videoId: 'dxW9Whf6pWA',
+        events: {
+          'onStateChange': function (event) {
+            if (event.data == YT.PlayerState.ENDED) {
+              goToNextVideo(1);
+            }
+          }
+        }
+      });
+
+      new YT.Player('video1', {
+        videoId: videoIds['video1'],
+        events: {
+          'onStateChange': function (event) {
+            if (event.data == YT.PlayerState.ENDED) {
+              goToNextVideo(2);
+            }
+          }
+        }
+      });
+
+
+        new YT.Player('video2', {
+        videoId: videoIds['video2'],
+        events: {
+          'onStateChange': function (event) {
+            if (event.data == YT.PlayerState.ENDED) {
+              goToNextVideo(3);
+            }
+          }
+        }
+      });
+
+
+        new YT.Player('video3', {
+        videoId: videoIds['video3'],
+        events: {
+          'onStateChange': function (event) {
+            if (event.data == YT.PlayerState.ENDED) {
+              goToNextVideo(4);
+            }
+          }
+        }
+      });
+
+
+        new YT.Player('video4', {
+        videoId: videoIds['video4'],
+        events: {
+          'onStateChange': function (event) {
+            if (event.data == YT.PlayerState.ENDED) {
+              goToNextVideo(5);
+            }
+          }
+        }
+      });
+    }
+
+    function goToNextVideo(videoNumber) {
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      }
+      setTimeout(function () {
+        animations(`div${videoNumber}`, `lock${videoNumber}`, `blob${videoNumber}`);
+        videowatched(`div${videoNumber - 1}`);
+      }, 3000);
+    }
+  </script>
 </body>
 
 </html>
