@@ -155,7 +155,7 @@ body {
 }
 
 .mudtxt {
-    padding-top: 50px;
+    padding-top: 100px;
     color: #fff;
     font-size: 2rem;
     font-weight: 700;
@@ -163,6 +163,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-bottom: 100px;
 }
 
 .mudtxt p {
@@ -170,7 +171,6 @@ body {
     font-weight: 400;
     color: #fff;
     margin-top: 10px;
-    margin-bottom: 50px;
 }
 
 .blockedbg {
@@ -261,24 +261,77 @@ i {
 
 
 
-.div1 { grid-area: 1 / 1 / 2 / 2; }
-.div2 { grid-area: 2 / 3 / 3 / 4; }
-.div3 { grid-area: 3 / 1 / 4 / 2; }
-.div4 { grid-area: 4 / 3 / 5 / 4; }
-.div5 { grid-area: 5 / 1 / 6 / 2; }
-.div6 { grid-area: 6 / 3 / 7 / 4; }
-.div7 { grid-area: 7 / 1 / 8 / 2; }
-.div8 { grid-area: 8 / 3 / 9 / 4; }
-.div9 { grid-area: 9 / 1 / 10 / 2; }
-.div10 { grid-area: 10 / 3 / 11 / 4; }
-.div11 { grid-area: 11 / 1 / 12 / 2; }
-.div12 { grid-area: 12 / 3 / 13 / 4; }
-.div13 { grid-area: 13 / 1 / 14 / 2; }
-.div14 { grid-area: 14 / 3 / 15 / 4; }
-.div15 { grid-area: 15 / 1 / 16 / 2; }
-.div16 { grid-area: 16 / 3 / 17 / 4; }
-.div17 { grid-area: 17 / 1 / 18 / 2; }
-.div18 { grid-area: 18 / 3 / 19 / 4; }
+.div1 {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.div2 {
+    grid-area: 2 / 3 / 3 / 4;
+}
+
+.div3 {
+    grid-area: 3 / 1 / 4 / 2;
+}
+
+.div4 {
+    grid-area: 4 / 3 / 5 / 4;
+}
+
+.div5 {
+    grid-area: 5 / 1 / 6 / 2;
+}
+
+.div6 {
+    grid-area: 6 / 3 / 7 / 4;
+}
+
+.div7 {
+    grid-area: 7 / 1 / 8 / 2;
+}
+
+.div8 {
+    grid-area: 8 / 3 / 9 / 4;
+}
+
+.div9 {
+    grid-area: 9 / 1 / 10 / 2;
+}
+
+.div10 {
+    grid-area: 10 / 3 / 11 / 4;
+}
+
+.div11 {
+    grid-area: 11 / 1 / 12 / 2;
+}
+
+.div12 {
+    grid-area: 12 / 3 / 13 / 4;
+}
+
+.div13 {
+    grid-area: 13 / 1 / 14 / 2;
+}
+
+.div14 {
+    grid-area: 14 / 3 / 15 / 4;
+}
+
+.div15 {
+    grid-area: 15 / 1 / 16 / 2;
+}
+
+.div16 {
+    grid-area: 16 / 3 / 17 / 4;
+}
+
+.div17 {
+    grid-area: 17 / 1 / 18 / 2;
+}
+
+.div18 {
+    grid-area: 18 / 3 / 19 / 4;
+}
 
 @media screen and (max-width: 768px) {
     .parent {
@@ -316,8 +369,10 @@ i {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 10px;
+grid-template-columns: repeat(4, 1fr);
+grid-template-rows: repeat(2, 1fr);
+grid-column-gap: 10px;
+grid-row-gap: 10px;
     color: #FFF;
     transition: all 0.3s ease-in-out;
     margin-left: 10px;
@@ -415,7 +470,7 @@ i {
         transform: rotate(180deg);
     }
 }
-    
+
 
 .modal-body {
     font-size: 18px;
@@ -474,22 +529,21 @@ i {
 .image-section {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     padding: 20px;
-  }
-  
-  .image-container {
+}
+
+.image-container {
     position: relative;
-    width: 30%;
+    width: 33.33%;
     margin-bottom: 20px;
-  }
-  
-  .image-container img {
+}
+
+.image-container img {
     width: 100%;
     cursor: pointer;
-  }
-  
-  .image-name {
+}
+
+.image-name {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -499,9 +553,9 @@ i {
     padding: 5px 10px;
     border-radius: 5px;
     font-weight: bold;
-  }
-  
-  .imgmodal {
+}
+
+.imgmodal {
     display: none;
     position: fixed;
     top: 0;
@@ -511,13 +565,12 @@ i {
     background-color: rgba(0, 0, 0, 0.836);
     z-index: 999;
     overflow: hidden;
-  }
-  
-  .modal-image {
+}
+
+.modal-image {
     display: block;
     max-width: 85%;
     max-height: 85%;
     margin: auto;
     margin-top: 50px;
-  }
-  
+}
