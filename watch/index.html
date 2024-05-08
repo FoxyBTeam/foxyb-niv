@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/84b3504d67.js" crossorigin="anonymous"></script>
+    <title>Assistindo</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+
+<body>
+    <div class="mainvid bkg" id="mainvid">
+        <div id="mainVideo"></div>
+        <div id="errorContainer"
+            style="display: none; flex-direction: column; gap: 10px; justify-content: center; align-items: center;">
+            <h1 style="color: rgb(255, 255, 255); font-size: 2rem; font-weight: 900;">Erro ao carregar o vídeo.</h1>
+            <p id="errorMessage" style="color: rgb(255, 255, 255); font-weight: 600;"></p>
+            <p id="errorInfo" style="color: rgba(255, 255, 255, 0.37); font-weight: 600;"></p>
+        </div>
+        <div class="buttons">
+            <button style="display: none;">← Anterior</button>
+            <button class="buttonact" style="display: none;">Próximo →</button>
+        </div>
+    </div>
+    <script>
+        var tag = document.createElement('script');
+        const belowcontent = document.getElementById('belowcontent');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        const urlParams = new URLSearchParams(window.location.search);
+        const videoID = urlParams.get('video');
+        const urlid = urlParams.get('id')
+        const hasW = urlParams.get('finished')
+        const errorContainer = document.getElementById('errorContainer');
+        const errorMessage = document.getElementById('errorMessage');
+        const errorInfo = document.getElementById('errorInfo');
+
+        async function fetchdata() {
+            const response = await fetch('/api/getvideodata?id').catch(err => {
+                errorMessage.innerText = "Erro ao carregar os dados do vídeo.";
+                errorInfo.innerText = "API Error";
+                errorContainer.style.display = "flex";
+            });
+            const data = await response.json();
+
+            return data;
+        }
+
+        console.log(videoID)
+
+
+        var player;
+        function onYouTubeIframeAPIReady() {
+            try {
+                player = new YT.Player('mainVideo', {
+                    height: '610',
+                    width: '1080',
+                    videoId: videoID,
+                    events: {
+                        'onStateChange': function (event) {
+                            if (event.data == YT.PlayerState.ENDED) {
+                                document.getElementById('mainvid').classList.remove('watching');
+                            } else if (event.data == YT.PlayerState.PLAYING) {
+                                document.getElementById('mainvid').classList.add('watching');
+                            }
+                        },
+                        'onError': function (event) {
+                            showErrorMessage(event.data);
+                        }
+                    }
+
+                });
+            } catch (e) {
+                showErrorMessage(e);
+            }
+        }
+        function showErrorMessage(e) {
+            const mainvideobody = document.getElementById('mainVideo');
+            mainvideobody.style.display = 'none';
+            errorContainer.style.display = 'flex';
+            if (e == 2) {
+                errorMessage.innerHTML = "ID incorreto ou faltando. Aguarde para próximas instruções!"
+                errorInfo.innerHTML = `ID: ${videoID} & HasW: ${hasW}`
+            } else if (e == 100) {
+                errorMessage.innerHTML = "Video indisponível (alguém fez caca na hora do upload hehe). Aguarde para próximas instruções!"
+            } else if (e == 5) {
+                errorMessage.innerHTML = "Erro no player. Por favor atualize a página!"
+            } else if (e == 101 || e == 105) {
+                errorMessage.innerHTML = "Video privado ou impossível de acessar. Aguarde para próximas instruções!"
+            } else {
+                errorMessage.innerHTML = `Erro desconhecido. ${e}`
+                errorInfo.innerHTML = `ID: ${videoID} HasW: ${hasW} url: ${window.location.href} `
+            }
+        }
+    </script>
+</body>
+
+</html>

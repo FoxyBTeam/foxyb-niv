@@ -8,20 +8,23 @@
   <link rel="stylesheet" href="assets/css/main.css">
   <script src="https://kit.fontawesome.com/84b3504d67.js" crossorigin="anonymous"></script>
   <meta data-n-head="1" data-hid="theme-color" name="theme-color" content="#ff5500">
-      <meta data-n-head="1" data-hid="description" name="description" content="Algo especial para uma pessoa especial! Parabéns FoxyBruna">
-      <meta data-n-head="1" data-hid="og:title" name="og:title" content="The Foxyb's basement">
-      <meta data-n-head="1" data-hid="og:description" name="og:description" content="Algo especial para uma pessoa especial! Parabéns FoxyBruna">
-      <meta data-n-head="1" data-hid="twitter:image" name="twitter:image" content="https://media.discordapp.net/attachments/732497260256165888/1105653374143184946/image.png">
-      <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+  <meta data-n-head="1" data-hid="description" name="description"
+    content="Algo especial para uma pessoa especial! Parabéns FoxyBruna">
+  <meta data-n-head="1" data-hid="og:title" name="og:title" content="The Foxyb's basement">
+  <meta data-n-head="1" data-hid="og:description" name="og:description"
+    content="Algo especial para uma pessoa especial! Parabéns FoxyBruna">
+  <meta data-n-head="1" data-hid="twitter:image" name="twitter:image"
+    content="https://media.discordapp.net/attachments/732497260256165888/1105653374143184946/image.png">
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
   <title>Parabéns Foxy!</title>
 </head>
 
 <body id="mainbody" style="overflow-x: hidden;">
   <!-- class="overflowhi" -->
   <div id="carregandodiv"
-    style="z-index: 99999; position: absolute; background-color: rgba(0, 0, 0, 0.952); width: 200vh; height: 100vh; display: flex; justify-content: center; align-items: center;">
+    style="z-index: 99999; position: absolute; background-color: rgba(0, 0, 0, 0.952); width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center;">
     <div>
-      <h1 style="color: #ffffff; text-align: center;" id="txt">Carregando Conteúdo...</h1>
+      <h1 style="color: #ffffff; text-align: center;" id="txt">Carregando Conteúdo</h1>
       <p style="color: #ffffff; text-align: center; font-weight: 500;" id="loadingp">Aguarde!</p>
     </div>
   </div>
@@ -45,11 +48,20 @@
     // Call the function to remove the class after 10 seconds
     removeOverflowhiClass();
 
+    function changeLoadingText() {
+      document.getElementById("loadingp").innerHTML = "Iniciando iframes";
+      setTimeout(() => {
+        document.getElementById("loadingp").innerHTML = "Iniciando callbacks";
+        setTimeout(() => {
+          document.getElementById("loadingp").innerHTML = "";
+        }, 2000);
+      }, 4000);
+    }
   </script>
   <div class="mainvid">
     <div id="mainVideo"></div>
   </div>
-  <div>
+  <div style="display: hidden;">
     <div class="mudtxt">
       <h1>
         Você é importante para muitas pessoas!</h1>

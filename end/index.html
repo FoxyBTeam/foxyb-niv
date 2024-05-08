@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Gallery</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background: #000;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 2cap;
+            padding: 25px 25px 0px 25px;
+        }
+
+        .video-thumbnail {
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .video-thumbnail:hover {
+            scale: 1.02;
+            transition: all 0.2s ease-in-out;
+            -webkit-box-shadow: 6px 7px 0px 0px rgba(255, 132, 0, 1);
+            -moz-box-shadow: 6px 7px 0px 0px rgba(255, 132, 0, 1);
+            box-shadow: 6px 7px 0px 0px rgba(255, 132, 0, 1);
+        }
+
+        .video-thumbnail img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="video-grid">
+    </div>
+
+    <script>
+        const videos = [
+            { name: 'video', id: 'video1', thumbnail: '/assets/img/placeholder.png' },
+            { name: 'video', id: 'video2', thumbnail: '/assets/img/placeholder.png' },
+            { name: 'video', id: 'video3', thumbnail: '/assets/img/placeholder.png' },
+            { name: 'video', id: 'video4', thumbnail: '/assets/img/placeholder.png' },
+            { name: 'video', id: 'video5', thumbnail: '/assets/img/placeholder.png' },
+            { name: 'video', id: 'video6', thumbnail: '/assets/img/placeholder.png' },
+            { name: 'video', id: 'video7', thumbnail: '/assets/img/placeholder.png' },
+            { name: 'video', id: 'video8', thumbnail: '/assets/img/placeholder.png' },
+        ];
+
+        const videoGrid = document.querySelector('.video-grid');
+
+        videos.forEach(video => {
+            const thumbnail = document.createElement('div');
+            thumbnail.classList.add('video-thumbnail');
+            thumbnail.innerHTML = `<img src="${video.thumbnail}" alt="${video.name}">`;
+            thumbnail.addEventListener('click', () => {
+                const url = `/watch/index.html?video=${video.id}&finished=true`;
+                window.location.href = url;
+            });
+            videoGrid.appendChild(thumbnail);
+            
+        });
+    </script>
+</body>
+
+</html>
