@@ -22,22 +22,25 @@ body {
     animation: ellipsis-dot 2s infinite .3s;
     animation-fill-mode: forwards;
     width: 1.25em;
-  }
-  
-  @keyframes ellipsis-dot {
+}
+
+@keyframes ellipsis-dot {
     25% {
-      content: "";
+        content: "";
     }
+
     50% {
-      content: ".";
+        content: ".";
     }
+
     75% {
-      content: "..";
+        content: "..";
     }
+
     100% {
-      content: "...";
+        content: "...";
     }
-  }
+}
 
 .parent {
     display: grid;
@@ -61,7 +64,7 @@ body {
 .bkg {
     background-image: linear-gradient(-45deg, #242424, #9f07dbb4, #ff5f1ab0, #9f07dbb4, #242424);
     background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
+    animation: gradient2 15s ease infinite;
     transition: all 3s ease-in-out;
     background-blend-mode: color;
 }
@@ -77,7 +80,7 @@ body {
     width: 100vw;
 }
 
-.buttons > button {
+.buttons>button {
     padding: 10px 20px 10px 20px;
     background-color: #222222;
     border: none;
@@ -97,7 +100,7 @@ body {
 }
 
 .watching {
-    background-color: #000000!important;
+    background-color: #000000 !important;
     transition: all 3s ease-in-out;
 }
 
@@ -121,6 +124,20 @@ body {
 }
 
 @keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes gradient2 {
     0% {
         background-position: 0% 50%;
     }
@@ -158,7 +175,9 @@ body {
     outline-style: solid;
     outline-width: 3px;
     border-radius: 1px;
+    background-color: #1F1F1F;
     animation: rotateHue 15s infinite ease-in-out;
+    z-index: 2;
 }
 
 @keyframes rotateHue {
@@ -188,6 +207,23 @@ body {
 
     100% {
         outline-color: red;
+    }
+}
+
+#introcontainer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    animation: scroll-right linear 5s infinite;
+    transition: all 1s ease-in-out;
+}
+
+@keyframes scroll-right {
+    0% {
+        background-position: -10% 50%;
     }
 }
 
@@ -453,10 +489,10 @@ i {
 
 .grid {
     display: grid;
-grid-template-columns: repeat(4, 1fr);
-grid-template-rows: repeat(2, 1fr);
-grid-column-gap: 10px;
-grid-row-gap: 10px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
     color: #FFF;
     transition: all 0.3s ease-in-out;
     margin-left: 10px;
@@ -616,23 +652,23 @@ grid-row-gap: 10px;
     flex-wrap: wrap;
     justify-content: center;
     overflow-x: hidden;
-  }
-  
-  .fanart-item {
+}
+
+.fanart-item {
     width: 600px;
     height: 600px;
     overflow: hidden;
     margin: 10px;
     cursor: pointer;
-  }
-  
-  .fanart-item img {
+}
+
+.fanart-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-  
-  .modal {
+}
+
+.modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -644,9 +680,9 @@ grid-row-gap: 10px;
     align-items: center;
     z-index: 9999;
     overflow-x: hidden;
-  }
-  
-  .modal-content {
+}
+
+.modal-content {
     max-width: 90vw;
     max-height: 90vh;
     overflow: auto;
@@ -654,16 +690,16 @@ grid-row-gap: 10px;
     border-radius: 5px;
     overflow-x: hidden;
     overflow: hidden;
-  }
+}
 
 
-  .imgmodal-content2 {
+.imgmodal-content2 {
     width: 473px;
     height: 671px;
 
-  }
-  
-  .modal-close {
+}
+
+.modal-close {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -673,5 +709,4 @@ grid-row-gap: 10px;
     color: #fff;
     font-size: 40px;
     cursor: pointer;
-  }
-  
+}
