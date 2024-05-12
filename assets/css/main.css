@@ -8,7 +8,7 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: #1F1F1F;
+    background-color: #000000;
     overflow-x: hidden;
     scroll-behavior: smooth;
 
@@ -74,7 +74,6 @@ body {
     bottom: 0;
     left: 0;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 20px;
     width: 100vw;
@@ -86,7 +85,19 @@ body {
     border: none;
     color: white;
     font-weight: 800;
-    font-size: larger;
+    font-size: xx-large;
+    cursor: pointer;
+    border-radius: 5px;
+    text-shadow: 1px 1px 1px #000000;
+}
+
+.preparebutton {
+    padding: 10px 20px 10px 20px;
+    background-color: #ffffff;
+    border: none;
+    color: rgb(0, 0, 0);
+    font-weight: 900;
+    font-size: xx-large;
     cursor: pointer;
     border-radius: 5px;
     text-shadow: 1px 1px 1px #000000;
@@ -314,19 +325,6 @@ svg {
 
 .overflowhi {
     overflow: hidden;
-}
-
-i {
-    position: absolute;
-    /* added */
-    top: 50%;
-    /* added */
-    left: 50%;
-    /* added */
-    transform: translate(-50%, -50%);
-    /* added */
-    cursor: pointer !important;
-    opacity: 1;
 }
 
 .watchedbg {
